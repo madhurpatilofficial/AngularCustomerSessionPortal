@@ -14,12 +14,13 @@ export class DashboardComponent implements OnInit {
   pageSize = 3;
   currentPage = 1;
   pagedSessions: any[] = [];
+  showActiveSessions: boolean = true;
   newSessionTab: any = {
     label: 'Add New Session',
     icon: 'add',
   };
 
-  constructor(private mockDataService: MockDataService) {}
+  constructor(private mockDataService: MockDataService) { }
 
   ngOnInit(): void {
     this.loadSessions();
@@ -64,6 +65,20 @@ export class DashboardComponent implements OnInit {
     // Implement archive logic if needed
   }
 
+
+  onActiveSessionsClick() {
+    console.log('Active Sessions button clicked');
+    this.showActiveSessions = true;
+    this.updatePagedSessions();
+  }
+
+  onArchivedSessionsClick() {
+    console.log('Archived Sessions button clicked');
+    this.showActiveSessions = false;
+    this.updatePagedSessions();
+  }
+
+
   onRestoreClick(sessionId: string) {
     console.log('Restore clicked for session ID:', sessionId);
     // Implement restore logic if needed
@@ -78,7 +93,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updatePagedSessions() {
-    const sessions = this.currentTab === 0 ? this.activeSessions : this.archivedSessions;
+    const sessions = this.showActiveSessions ? this.activeSessions : this.archivedSessions;
     const startIndex = (this.currentPage - 1) * this.pageSize;
     this.pagedSessions = sessions.slice(startIndex, startIndex + this.pageSize);
   }

@@ -8,7 +8,14 @@
 </div>
 
 
-  <div class="session-table">
+<div class="active-archieved-btn">
+  <button mat-button class="additional-button" (click)="onActiveSessionsClick()">Active Sessions</button>
+  <button mat-button class="additional-button" (click)="onArchivedSessionsClick()">Archived Sessions</button>
+</div>
+
+
+<div class="session-table-container">
+  <div class="session-table" *ngIf="showActiveSessions || pagedSessions.length > 0">
     <div class="session-header">
       <div class="session-column">Session Name</div>
       <div class="session-column">Session ID</div>
@@ -24,50 +31,54 @@
       <div class="session-column">Delete</div>
       <div class="session-column">Archive</div>
     </div>
-    <div *ngFor="let session of pagedSessions" class="session-row">
-      <div class="session-column">{{ session.SessionName }}</div>
-      <div class="session-column">{{ session.SessionID }}</div>
-      <div class="session-column">{{ session.CustomerName }}</div>
-      <div class="session-column">{{ session.CreatedBy }}</div>
-      <div class="session-column">{{ session.CreatedOn }}</div>
-      <div class="session-column">{{ session.UpdatedOn }}</div>
-      <div class="session-column">{{ session.PotentialLead }}</div>
-      <div class="session-column">{{ session.Priority }}</div>
-      <div class="session-column">{{ session.FollowUpOn }}</div>
-      <div class="session-column">
-        <button mat-icon-button class="no-background" (click)="onViewClick(session.SessionID)">
-          <mat-icon>remove_red_eye</mat-icon>
-        </button>
-      </div>
-      <div class="session-column">
-        <button mat-icon-button class="no-background" (click)="onEditClick(session.SessionID)">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </div>
-      <div class="session-column">
-        <button mat-icon-button class="no-background" (click)="onDeleteClick(session.SessionID)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-      <div class="session-column">
-        <button mat-icon-button class="no-background" (click)="onArchiveClick(session.SessionID)">
-          <mat-icon>archive</mat-icon>
-        </button>
-      </div>
-    </div>
-
-    <div class="pagination">
-      <div class="pagination-controls">
-        <button mat-icon-button class="no-background pagination-btn" (click)="prevPage()"
-          [disabled]="currentPage === 1">
-          <mat-icon>navigate_before</mat-icon>
-        </button>
-        <span>{{ currentPage }} / {{ totalPages }}</span>
-        <button mat-icon-button class="no-background pagination-btn" (click)="nextPage()"
-          [disabled]="currentPage === totalPages">
-          <mat-icon>navigate_next</mat-icon>
-        </button>
-      </div>
-    </div>
-
   </div>
+  <div *ngFor="let session of pagedSessions" class="session-row">
+    <div class="session-column">{{ session.SessionName }}</div>
+    <div class="session-column">{{ session.SessionID }}</div>
+    <div class="session-column">{{ session.CustomerName }}</div>
+    <div class="session-column">{{ session.CreatedBy }}</div>
+    <div class="session-column">{{ session.CreatedOn }}</div>
+    <div class="session-column">{{ session.UpdatedOn }}</div>
+    <div class="session-column">{{ session.PotentialLead }}</div>
+    <div class="session-column">{{ session.Priority }}</div>
+    <div class="session-column">{{ session.FollowUpOn }}</div>
+    <div class="session-column">
+      <button mat-icon-button class="no-background" (click)="onViewClick(session.SessionID)">
+        <mat-icon>remove_red_eye</mat-icon>
+      </button>
+    </div>
+    <div class="session-column">
+      <button mat-icon-button class="no-background" (click)="onEditClick(session.SessionID)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="session-column">
+      <button mat-icon-button class="no-background" (click)="onDeleteClick(session.SessionID)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="session-column">
+      <button mat-icon-button class="no-background" (click)="onArchiveClick(session.SessionID)">
+        <mat-icon>archive</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <div class="pagination-controls">
+      <button mat-icon-button class="no-background pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button mat-icon-button class="no-background pagination-btn" (click)="nextPage()"
+        [disabled]="currentPage === totalPages">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!showActiveSessions && pagedSessions.length === 0" class="no-sessions">
+    <p>No archived sessions available.</p>
+  </div>
+
+</div>
