@@ -1,62 +1,73 @@
-<!-- dashboard.component.html -->
-<div class="session-table">
-  <div class="session-header">
-    <div class="session-column">Session Name</div>
-    <div class="session-column">Session ID</div>
-    <div class="session-column">Customer Name</div>
-    <div class="session-column">Created By</div>
-    <div class="session-column">Created On</div>
-    <div class="session-column">Updated On</div>
-    <div class="session-column">Potential Lead</div>
-    <div class="session-column">Priority</div>
-    <div class="session-column">Follow-Up On</div>
-    <div class="session-column">View</div>
-    <div class="session-column">Edit</div>
-    <div class="session-column">Delete</div>
-    <div class="session-column">Archive</div>
-  </div>
-  <div *ngFor="let session of pagedSessions" class="session-row">
-    <div class="session-column">{{ session.SessionName }}</div>
-    <div class="session-column">{{ session.SessionID }}</div>
-    <div class="session-column">{{ session.CustomerName }}</div>
-    <div class="session-column">{{ session.CreatedBy }}</div>
-    <div class="session-column">{{ session.CreatedOn }}</div>
-    <div class="session-column">{{ session.UpdatedOn }}</div>
-    <div class="session-column">{{ session.PotentialLead }}</div>
-    <div class="session-column">{{ session.Priority }}</div>
-    <div class="session-column">{{ session.FollowUpOn }}</div>
-    <div class="session-column">
-      <button mat-icon-button class="no-background" (click)="onViewClick(session.SessionID)">
-        <mat-icon>remove_red_eye</mat-icon>
-      </button>
+<div class="add-new-session-btn">
+  <button mat-icon-button class="custom-add-button" (click)="onNewSessionTabClick()">
+    <div class="circle-icon">
+      <mat-icon>add</mat-icon>
     </div>
-    <div class="session-column">
-      <button mat-icon-button class="no-background" (click)="onEditClick(session.SessionID)">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
-    <div class="session-column">
-      <button mat-icon-button class="no-background" (click)="onDeleteClick(session.SessionID)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-    <div class="session-column">
-      <button mat-icon-button class="no-background" (click)="onArchiveClick(session.SessionID)">
-        <mat-icon>archive</mat-icon>
-      </button>
-    </div>
-  </div>
-
-<div class="pagination">
-  <div class="pagination-controls">
-    <button mat-icon-button class="no-background pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
-      <mat-icon>navigate_before</mat-icon>
-    </button>
-    <span>{{ currentPage }} / {{ totalPages }}</span>
-    <button mat-icon-button class="no-background pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
-      <mat-icon>navigate_next</mat-icon>
-    </button>
-  </div>
+    <span>Add New Session</span>
+  </button>
 </div>
 
-</div>
+
+  <div class="session-table">
+    <div class="session-header">
+      <div class="session-column">Session Name</div>
+      <div class="session-column">Session ID</div>
+      <div class="session-column">Customer Name</div>
+      <div class="session-column">Created By</div>
+      <div class="session-column">Created On</div>
+      <div class="session-column">Updated On</div>
+      <div class="session-column">Potential Lead</div>
+      <div class="session-column">Priority</div>
+      <div class="session-column">Follow-Up On</div>
+      <div class="session-column">View</div>
+      <div class="session-column">Edit</div>
+      <div class="session-column">Delete</div>
+      <div class="session-column">Archive</div>
+    </div>
+    <div *ngFor="let session of pagedSessions" class="session-row">
+      <div class="session-column">{{ session.SessionName }}</div>
+      <div class="session-column">{{ session.SessionID }}</div>
+      <div class="session-column">{{ session.CustomerName }}</div>
+      <div class="session-column">{{ session.CreatedBy }}</div>
+      <div class="session-column">{{ session.CreatedOn }}</div>
+      <div class="session-column">{{ session.UpdatedOn }}</div>
+      <div class="session-column">{{ session.PotentialLead }}</div>
+      <div class="session-column">{{ session.Priority }}</div>
+      <div class="session-column">{{ session.FollowUpOn }}</div>
+      <div class="session-column">
+        <button mat-icon-button class="no-background" (click)="onViewClick(session.SessionID)">
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </div>
+      <div class="session-column">
+        <button mat-icon-button class="no-background" (click)="onEditClick(session.SessionID)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="session-column">
+        <button mat-icon-button class="no-background" (click)="onDeleteClick(session.SessionID)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div class="session-column">
+        <button mat-icon-button class="no-background" (click)="onArchiveClick(session.SessionID)">
+          <mat-icon>archive</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <div class="pagination-controls">
+        <button mat-icon-button class="no-background pagination-btn" (click)="prevPage()"
+          [disabled]="currentPage === 1">
+          <mat-icon>navigate_before</mat-icon>
+        </button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button mat-icon-button class="no-background pagination-btn" (click)="nextPage()"
+          [disabled]="currentPage === totalPages">
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>

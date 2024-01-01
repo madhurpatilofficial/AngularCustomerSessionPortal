@@ -14,11 +14,21 @@ export class DashboardComponent implements OnInit {
   pageSize = 3;
   currentPage = 1;
   pagedSessions: any[] = [];
+  newSessionTab: any = {
+    label: 'Add New Session',
+    icon: 'add',
+  };
 
   constructor(private mockDataService: MockDataService) {}
 
   ngOnInit(): void {
     this.loadSessions();
+  }
+
+  onNewSessionTabClick() {
+    console.log('Add New Session button clicked');
+    // Implement logic to add a new session here
+    // You might want to open a dialog or navigate to a different page for adding a new session
   }
 
   loadSessions() {

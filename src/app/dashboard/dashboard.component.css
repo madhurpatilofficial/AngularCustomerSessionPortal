@@ -6,7 +6,7 @@
 
 .session-table {
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 2rem;
   overflow-x: auto;
   border-radius: 12px;
   border-collapse: collapse;
@@ -113,4 +113,65 @@ mat-tab {
 
 .pagination-controls button {
   margin: 0 5px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0; /* Remove margin */
+}
+
+.add-new-session-btn {
+  margin-right: 1rem;
+}
+
+.add-new-session-btn button {
+  margin-top: 50px;
+  color: #000000;
+  background-color: #56cd32; /* Blue button color */
+  border: none;
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-new-session-btn button:hover {
+  background-color: #338ff1; /* Darken button color on hover */
+}
+
+
+.custom-add-button {
+  display: flex;
+  align-items: center;
+}
+
+.circle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; /* Adjust the size of the circle */
+  height: 32px; /* Adjust the size of the circle */
+  background-color: #000000; /* Blue button color */
+  border-radius: 50%; /* Make it a circle */
+  margin-right: 8px; /* Adjust the margin as needed */
+}
+
+.circle-icon mat-icon {
+  color: #fff;
+}
+
+.custom-add-button span {
+  margin-left: 4px; /* Adjust the margin between the icon and text */
+}
+
+
+
+.session-table {
+  margin-bottom: 0; /* Remove any bottom margin */
+}
+
+.add-new-session-btn {
+  margin-top: 0; /* Remove any top margin */
 }
